@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Link Sharing Website</title>
+</head>
+<body>
+  <h1>Link Sharing Website</h1>
+
+  <!-- Link Submission Form -->
+  <form action="submit-link.php" method="post">
+    <label for="link">Submit a Link:</label>
+    <input type="url" name="link" id="link" required>
+    <button type="submit">Submit</button>
+  </form>
+
+  <!-- Display Shared Links -->
+  <h2>Shared Links:</h2>
+  <ul>
+    <li><a href="http://example.com">Example Link 1</a></li>
+    <li><a href="http://example.com">Example Link 2</a></li>
+    <!-- Add more list items dynamically using server-side code -->
+  </ul>
+
+  <!-- JavaScript to handle dynamic link submission and display -->
+  <script>
+    // Add event listener to the form submission
+    document.querySelector('form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form submission
+      
+      // Get the submitted link value
+      var linkInput = document.getElementById('link');
+      var linkValue = linkInput.value;
+      
+      // Add the link to the shared links list
+      var linksList = document.querySelector('ul');
+      var newLinkItem = document.createElement('li');
+      newLinkItem.innerHTML = '<a href="' + linkValue + '">' + linkValue + '</a>';
+      linksList.appendChild(newLinkItem);
+      
+      // Clear the link submission form
+      linkInput.value = '';
+    });
+  </script>
+</body>
+</html>
