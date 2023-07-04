@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Link Sharing Website</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px auto;
+    }
+
+    label {
+      margin-bottom: 5px;
+    }
+
+    input[type="url"],
+    input[type="text"] {
+      width: 300px;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      margin-bottom: 10px;
+    }
+
+    button[type="submit"] {
+      padding: 5px 10px;
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    h2 {
+      margin-top: 20px;
+      color: #333;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      margin: 5px 0;
+    }
+
+    a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Link Sharing Website</h1>
+
+  <!-- Link Submission Form -->
+  <form>
+    <label for="link-name">Link Name:</label>
+    <input type="text" name="link-name" id="link-name" required>
+    <label for="link-url">Link URL:</label>
+    <input type="url" name="link-url" id="link-url" required>
+    <button type="submit">Submit</button>
+  </form>
+
+  <!-- Display Shared Links -->
+  <h2>Shared Links:</h2>
+  <ul id="shared-links">
+    <!-- Shared links will be added dynamically using JavaScript -->
+  </ul>
+
+  <!-- JavaScript to handle dynamic link submission and display -->
+  <script>
+    document.querySelector('form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form submission
+
+      // Get the submitted link name and URL
+      var linkNameInput = document.getElementById('link-name');
+      var linkUrlInput = document.getElementById('link-url');
+      var linkName = linkNameInput.value;
+      var linkUrl = linkUrlInput.value;
+
+      // Add the link to the shared links list
+      var linksList = document.getElementById('shared-links');
+      var newLinkItem = document.createElement('li');
+      newLinkItem.innerHTML = '<a href="' + linkUrl + '">' + linkName + '</a>';
+      linksList.appendChild(newLinkItem);
+
+      // Clear the link submission form
+      linkNameInput.value = '';
+      linkUrlInput.value = '';
+    });
+  </script>
+</body>
+</html>
+
